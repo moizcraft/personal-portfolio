@@ -1,47 +1,139 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import '../styles/About.css';
+import profileImage from '../assets/image/moiz.jpg'
 
-// Skill Bar Component
-const SkillBar = ({ name, percentage, index }) => {
+// Circular Skill Component
+const SkillCircle = ({ name, percentage, index }) => {
+  const radius = 35;
+  const circumference = 2 * Math.PI * radius;
+  const offset = circumference - (percentage / 100) * circumference;
+
   const containerVariants = {
-    hidden: { opacity: 0, y: 10 },
+    hidden: { opacity: 0, scale: 0.8 },
     visible: {
       opacity: 1,
-      y: 0,
-      transition: { duration: 0.5, ease: "easeOut", delay: index * 0.1 }
+      scale: 1,
+      transition: { duration: 0.5, ease: "easeOut", delay: index * 0.08 }
     }
   };
 
-  const barVariants = {
-    hidden: { scaleX: 0 },
+  const circleVariants = {
+    hidden: { strokeDashoffset: circumference },
     visible: {
-      scaleX: 1,
-      transition: { duration: 1, ease: "easeOut", delay: index * 0.1 + 0.3 }
+      strokeDashoffset: offset,
+      transition: { duration: 1.2, ease: "easeOut", delay: index * 0.08 + 0.2 }
+    }
+  };
+
+
+
+
+  return (
+    <motion.div
+      className="skill-circle-container"
+      variants={containerVariants}
+      whileHover={{ scale: 1.08 }}
+      transition={{ type: "spring", stiffness: 300, damping: 15 }}
+    >
+      <svg width="90" height="90" viewBox="0 0 90 90" className="skill-circle-svg">
+        {/* Background Circle */}
+        <circle
+          cx="45"
+          cy="45"
+          r={radius}
+          stroke="#1a1a1a"
+          strokeWidth="2.5"
+          fill="none"
+        />
+
+        {/* Progress Circle */}
+        <motion.circle
+          cx="45"
+          cy="45"
+          r={radius}
+          stroke="#ffffff"
+          strokeWidth="2.5"
+          fill="none"
+          strokeDasharray={circumference}
+          strokeDashoffset={circumference}
+          strokeLinecap="round"
+          variants={circleVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        />
+      </svg>
+
+      {/* Percentage Text */}
+      <div className="skill-circle-text">
+        <span className="skill-percentage">{percentage}%</span>
+      </div>
+
+      {/* Skill Name */}
+      <p className="skill-name">{name}</p>
+    </motion.div>
+  );
+};
+
+// Skill Category Component
+const SkillCategory = ({ title, skills, index }) => {
+  const categoryVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: "easeOut", delay: index * 0.15 }
     }
   };
 
   return (
     <motion.div
-      className="skill-bar-container"
-      variants={containerVariants}
+      className="skill-category"
+      variants={categoryVariants}
     >
-      <div className="skill-bar-header">
-        <span className="skill-name">{name}</span>
-        <span className="skill-percentage">{percentage}%</span>
-      </div>
-      <div className="skill-bar-background">
-        <motion.div
-          className="skill-bar-fill"
-          variants={barVariants}
-          style={{ width: `${percentage}%` }}
-        />
+      <h4 className="skill-category-title">{title}</h4>
+      <div className="skill-circles-grid">
+        {skills.map((skill, idx) => (
+          <SkillCircle
+            key={idx}
+            name={skill.name}
+            percentage={skill.percentage}
+            index={idx}
+          />
+        ))}
       </div>
     </motion.div>
   );
 };
 
 export const About = () => {
+
+
+    // calculate/update age
+
+  function getAge(dob) {
+  const today = new Date();
+  const birthDate = new Date(dob);
+
+  let age = today.getFullYear() - birthDate.getFullYear();
+
+  const hasBirthdayPassed =
+    today.getMonth() > birthDate.getMonth() ||
+    (today.getMonth() === birthDate.getMonth() &&
+      today.getDate() >= birthDate.getDate());
+
+  if (!hasBirthdayPassed) {
+    age--;
+  }
+
+  return age;
+}
+
+// Usage
+const age = getAge("2005-09-26");
+console.log("Age:", age);
+
   const sectionVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -72,11 +164,30 @@ export const About = () => {
   };
 
   const skillsData = [
-    { name: 'HTML', percentage: 100 },
-    { name: 'CSS', percentage: 90 },
-    { name: 'Bootstrap', percentage: 90 },
-    { name: 'JavaScript', percentage: 85 }
+    {
+      category: 'Frontend Core',
+      skills: [
+        { name: 'HTML5', percentage: 95 },
+        { name: 'CSS3', percentage: 80 },
+        { name: 'Tailwind CSS', percentage: 70 }
+      ]
+    },
+    {
+      category: 'JavaScript & Frameworks',
+      skills: [
+        { name: 'JavaScript', percentage: 75 },
+        { name: 'React.js', percentage: 70 }
+      ]
+    },
+    {
+      category: 'Tools & Workflow',
+      skills: [
+        { name: 'Git & GitHub', percentage: 70 }
+      ]
+    }
   ];
+
+  
 
   return (
     <section id="about" className="about">
@@ -98,40 +209,51 @@ export const About = () => {
                 variants={imageVariants}
               >
                 <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop"
-                  alt="Moiz Nadeem"
+                  src={profileImage}
+                  alt="Moiz"
                   className="profile-image"
                 />
               </motion.div>
 
               {/* Personal Info */}
               <div className="personal-info">
-                <h3 className="person-name">Moiz Nadeem</h3>
-                <p className="person-role">Frontend Developer</p>
-
-                <div className="contact-details">
-                  <div className="contact-row">
-                    <span className="contact-label">Email:</span>
-                    <p className="contact-value">moiz@example.com</p>
-                  </div>
-                  <div className="contact-row">
-                    <span className="contact-label">WhatsApp:</span>
-                    <p className="contact-value">+92 300 1234567</p>
-                  </div>
+                <div>
+                  <span className="info-label">Name:</span>
+                  <h3 className="person-name">Moiz</h3>
+                </div>
+                <div>
+                  <span className="info-label">City:</span>
+                  <h3 className="person-city">Karachi, Pakistan</h3>
+                </div>
+                <div>
+                  <span className="info-label">Age:</span>
+                  <h3 className="person-age">{age}</h3>
+                </div>
+                <div>
+                  <span className="info-label">Profile:</span>
+                  <p className="person-role">Frontend Developer</p>
+                </div>
+                <div>
+                  <span className="info-label">Email:</span>
+                  <p className="person-role">moizxcraft@gmail.com</p>
+                </div>
+                <div>
+                  <span className="info-label">What's App:</span>
+                  <p className="person-role">+92 3172863617</p>
                 </div>
               </div>
             </div>
 
-            {/* Skills with Progress Bars */}
+            {/* Skills with Circular Progress */}
             <motion.div className="skills-progress-section" variants={contentVariants}>
-              <h4 className="skills-section-title">Technical Skills</h4>
-              <div className="skills-bars-list">
-                {skillsData.map((skill, index) => (
-                  <SkillBar
-                    key={index}
-                    name={skill.name}
-                    percentage={skill.percentage}
-                    index={index}
+              <h4 className="skills-section-title">Skills</h4>
+              <div className="skills-categories">
+                {skillsData.map((category, idx) => (
+                  <SkillCategory
+                    key={idx}
+                    title={category.category}
+                    skills={category.skills}
+                    index={idx}
                   />
                 ))}
               </div>
@@ -149,22 +271,28 @@ export const About = () => {
             {/* Description Text */}
             <motion.div className="about-text-content" variants={contentVariants}>
               <p className="about-paragraph">
-                I'm a passionate frontend developer dedicated to creating beautiful, 
-                intuitive, and performant user experiences. With a strong foundation in 
-                React, JavaScript, and modern web technologies, I transform complex ideas 
-                into elegant digital solutions.
+                I’m a passionate Frontend Developer focused on building
+                clean, responsive, and user-friendly websites.
               </p>
 
               <p className="about-paragraph">
-                My approach focuses on clean code, responsive design, and continuous learning. 
-                I believe in the power of great UI/UX and take pride in crafting interfaces 
-                that not only look stunning but also provide exceptional user interactions.
+                I work with HTML, CSS, JavaScript, React, and Tailwind CSS
+                to create modern web interfaces with smooth animations
+                and great user experience.
               </p>
 
               <p className="about-paragraph">
-                I'm committed to staying at the forefront of web development trends and 
-                technologies. Every project is an opportunity to solve problems creatively 
-                and deliver value to users and businesses alike.
+
+                I have a strong interest in research and enjoy exploring
+                new technologies, tools, and best practices to improve
+                my development skills.
+              </p>
+
+              <p className="about-paragraph">
+                Currently, I’m learning backend development to expand my
+                skill set and move towards full-stack development.
+                My long-term goal is to grow as a Software Engineer
+                and build scalable, real-world applications.
               </p>
             </motion.div>
           </motion.div>

@@ -1,10 +1,11 @@
 /* About Section */
 .about {
   min-height: 100vh;
-  padding: 20px 2rem 80px;
+  padding: 40px 2rem 80px;
   background: #000000;
   position: relative;
   overflow: hidden;
+  
 }
 
 .about-wrapper {
@@ -37,15 +38,15 @@
 /* Profile Section */
 .profile-section {
   display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  align-items: center;
+  /* flex-direction: column; */
+  gap: 1rem;
+  align-items: flex-start;
 }
 
 /* Profile Image */
 .profile-image-container {
-  width: 240px;
-  height: 240px;
+  width: 200px;
+  height: 200px;
   flex-shrink: 0;
 }
 
@@ -53,16 +54,16 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 16px;
-  border: 2px solid #1a1a1a;
-  box-shadow: 0 10px 30px rgba(119, 136, 115, 0.1);
+  border-radius: 8px;
+  border: 1px solid #1a1a1a;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
   filter: brightness(0.95) contrast(1.1);
   transition: all 0.3s ease;
 }
 
 .profile-image:hover {
   filter: brightness(1) contrast(1.15);
-  box-shadow: 0 15px 40px rgba(119, 136, 115, 0.2);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
   transform: translateY(-2px);
 }
 
@@ -70,56 +71,48 @@
 .personal-info {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.80rem;
   width: 100%;
-  text-align: center;
+}
+
+.personal-info > div {
+  display: flex;
+  /* flex-direction: column; */
+  gap: 5px;
+}
+
+.info-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #555555;
+  letter-spacing: 0.5px;
+  text-transform: capitalize;
 }
 
 .person-name {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #ffffff;
-  margin: 0;
-  letter-spacing: -0.3px;
-  line-height: 1.3;
+  font-size: 0.85rem;
+  font-weight: 500;
+    color: #555555;
+  line-height: 1.4;
 }
 
 .person-role {
-  font-size: 1rem;
-  color: #9ca3af;
-  margin: 0;
+  font-size: 0.85rem;
+  color: #555555;
   font-weight: 500;
-  letter-spacing: 0.2px;
+  line-height: 1.4;
 }
 
-.contact-details {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  margin-top: 0.5rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid #1a1a1a;
+.person-age {
+  font-size: 0.85rem;
+  color: #555555;
+  font-weight: 500;
+  line-height: 1.4;
 }
 
-.contact-row {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  align-items: center;
-}
-
-.contact-label {
-  font-size: 0.8rem;
-  font-weight: 600;
-  color: #778873;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-}
-
-.contact-value {
-  font-size: 0.95rem;
-  color: #d1d5db;
-  margin: 0;
+.person-city {
+  font-size: 0.85rem;
+  color: #555555;
   font-weight: 500;
   line-height: 1.4;
 }
@@ -127,74 +120,110 @@
 /* Skills Progress Section */
 .skills-progress-section {
   width: 100%;
-  margin-top: 0.5rem;
+  margin-top: 0px;
 }
 
 .skills-section-title {
   font-size: 1.1rem;
   font-weight: 700;
-  color: #ffffff;
-  margin: 0 0 1.75rem 0;
+  color: #555555;
+  margin: 0 0 2rem 0;
   letter-spacing: 0.3px;
-  text-align: center;
+  text-align: left;
   text-transform: capitalize;
 }
 
-.skills-bars-list {
+.skills-categories {
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
+  gap: 2.5rem;
 }
 
-/* Skill Bar Component */
-.skill-bar-container {
-  display: flex;
-  flex-direction: column;
-  gap: 0.6rem;
+/* Skill Category */
+.skill-category {
+  width: 100%;
 }
 
-.skill-bar-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 2px;
-}
-
-.skill-name {
-  font-size: 0.95rem;
+.skill-category-title {
+  font-size: 0.85rem;
   font-weight: 600;
   color: #ffffff;
-  letter-spacing: 0.2px;
+  margin: 0 0 1.25rem 0;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+  opacity: 0.85;
 }
 
-.skill-percentage {
-  font-size: 0.9rem;
-  font-weight: 700;
-  color: #778873;
-  min-width: 35px;
-  text-align: right;
-}
-
-.skill-bar-background {
+.skill-circles-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem 1.2rem;
+  align-items: center;
+  justify-items: center;
   width: 100%;
-  height: 6px;
-  background: #1a1a1a;
-  border-radius: 3px;
-  overflow: hidden;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.4);
+  max-width: 350px;
 }
 
-.skill-bar-fill {
-  height: 100%;
-  background: linear-gradient(90deg, #778873 0%, #6b7a68 100%);
-  border-radius: 3px;
-  transform-origin: left;
-  box-shadow: 0 0 10px rgba(119, 136, 115, 0.35);
+/* Skill Circle Component */
+.skill-circle-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  width: 100%;
+  max-width: 90px;
+}
+
+.skill-circle-svg {
+  width: 90px;
+  height: 90px;
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.25));
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.skill-circle-container:hover .skill-circle-svg {
+  filter: drop-shadow(0 4px 10px rgba(255, 255, 255, 0.08));
+}
+
+.skill-circle-text {
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-circle-container .skill-percentage {
+  font-size: 1rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1;
+  z-index: 1;
+  pointer-events: none;
+  text-align: center;
+}
+
+.skill-circle-container .skill-name {
+  font-size: 0.65rem;
+  font-weight: 500;
+  color: #888888;
+  text-align: center;
+  letter-spacing: 0.15px;
+  width: 100%;
+  word-wrap: break-word;
+  line-height: 1.3;
 }
 
 /* Right Column - About Description */
 .about-right {
+  width: 550px;
   display: flex;
+  margin-left: 200px;
   flex-direction: column;
   gap: 2.5rem;
 }
@@ -217,7 +246,7 @@
 .heading-underline {
   width: 80px;
   height: 3px;
-  background: #778873;
+  background: #ffffff;
   border-radius: 2px;
 }
 
@@ -228,8 +257,8 @@
 }
 
 .about-paragraph {
-  font-size: 1rem;
-  color: #d1d5db;
+  font-size: 0.95rem;
+  color: #555555;
   line-height: 1.8;
   margin: 0;
   letter-spacing: 0.3px;
@@ -243,7 +272,8 @@
   }
 
   .profile-section {
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   .profile-image-container {
@@ -254,140 +284,294 @@
   .about-heading-title {
     font-size: 2.2rem;
   }
+
+  .about-right {
+    width: auto;
+    margin-left: 0;
+  }
+
+  .skill-bar-container {
+    width: auto;
+  }
 }
 
 @media (max-width: 768px) {
   .about {
-    padding: 20px 2rem 60px;
+    padding: 20px 1.5rem 60px;
+  }
+
+  .about-wrapper {
+    gap: 2rem;
   }
 
   .about-container-new {
-    gap: 2.5rem;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 0 1rem;
   }
 
   .about-left {
-    gap: 2.5rem;
+    gap: 2rem;
   }
 
   .profile-section {
-    gap: 1.75rem;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
   }
 
   .profile-image-container {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
+    margin: 0 auto;
+  }
+
+  .personal-info {
+    gap: 0.75rem;
+  }
+
+  .personal-info > div {
+    flex-direction: column;
+    gap: 0.2rem;
   }
 
   .person-name {
-    font-size: 1.35rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #555555;
+    line-height: 1.4;
   }
 
   .person-role {
-    font-size: 0.95rem;
+    font-size: 0.85rem;
+    color: #555555;
+    font-weight: 500;
+    line-height: 1.4;
   }
 
-  .contact-value {
-    font-size: 0.9rem;
+  .info-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #555555;
+    letter-spacing: 0.5px;
+    text-transform: capitalize;
   }
 
-  .about-heading-title {
-    font-size: 1.9rem;
-  }
-
-  .about-paragraph {
-    font-size: 0.95rem;
-    line-height: 1.7;
+  .skills-progress-section {
+    width: 100%;
+    margin-top: 0;
   }
 
   .skills-section-title {
     font-size: 1rem;
+    margin-bottom: 1.5rem;
   }
 
-  .skill-name {
+  .skills-categories {
+    gap: 2rem;
+  }
+
+  .skill-category-title {
+    font-size: 0.8rem;
+    margin-bottom: 1rem;
+  }
+
+  .skill-circles-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem 1rem;
+    max-width: 320px;
+  }
+
+  .skill-circle-container {
+    gap: 0.5rem;
+    max-width: 85px;
+  }
+
+  .skill-circle-svg {
+    width: 85px;
+    height: 85px;
+  }
+
+  .skill-circle-text {
+    width: 85px;
+    height: 85px;
+  }
+
+  .skill-circle-container .skill-percentage {
+    font-size: 0.95rem;
+  }
+
+  .skill-circle-container .skill-name {
+    font-size: 0.6rem;
+  }
+
+  .about-heading-title {
+    font-size: 1.8rem;
+  }
+
+  .about-paragraph {
     font-size: 0.9rem;
+    color: #555555;
+    line-height: 1.6;
+    letter-spacing: 0.2px;
   }
 
-  .skill-bar-background {
-    height: 5px;
+  .about-right {
+    width: auto;
+    margin-left: 0;
   }
 
-  .skills-bars-list {
-    gap: 1.5rem;
+  .skill-bar-container {
+    width: auto;
   }
 }
 
 @media (max-width: 480px) {
   .about {
     padding: 20px 1rem 40px;
+    min-height: auto;
   }
 
-  .about-container-new {
-    gap: 2rem;
-  }
-
-  .about-left {
-    gap: 2rem;
-  }
-
-  .profile-section {
+  .about-wrapper {
     gap: 1.5rem;
   }
 
+  .about-container-new {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    padding: 0;
+  }
+
+  .about-left {
+    gap: 1.5rem;
+  }
+
+  .profile-section {
+    flex-direction: column;
+    gap: 0.75rem;
+    align-items: flex-start;
+    width: 100%;
+  }
+
   .profile-image-container {
-    width: 180px;
-    height: 180px;
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+  }
+
+  .personal-info {
+    width: 100%;
+    gap: 0.5rem;
+  }
+
+  .personal-info > div {
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+
+  .info-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: #555555;
+    letter-spacing: 0.4px;
+    text-transform: capitalize;
   }
 
   .person-name {
-    font-size: 1.2rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #555555;
+    line-height: 1.3;
   }
 
   .person-role {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    color: #555555;
+    font-weight: 500;
+    line-height: 1.3;
   }
 
-  .contact-label {
-    font-size: 0.75rem;
-  }
-
-  .contact-value {
-    font-size: 0.85rem;
-  }
-
-  .about-heading-title {
-    font-size: 1.6rem;
-  }
-
-  .heading-underline {
-    width: 60px;
-  }
-
-  .about-paragraph {
-    font-size: 0.9rem;
-    line-height: 1.6;
+  .skills-progress-section {
+    width: 100%;
+    margin-top: 0;
   }
 
   .skills-section-title {
     font-size: 0.95rem;
+    margin-bottom: 1.25rem;
+    font-weight: 700;
   }
 
-  .skill-name {
-    font-size: 0.85rem;
+  .skills-categories {
+    gap: 1.75rem;
   }
 
-  .skill-percentage {
-    font-size: 0.85rem;
+  .skill-category-title {
+    font-size: 0.75rem;
+    margin-bottom: 0.9rem;
   }
 
-  .skill-bar-background {
-    height: 5px;
+  .skill-circles-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem 0.8rem;
+    max-width: 280px;
   }
 
-  .skills-bars-list {
-    gap: 1.25rem;
+  .skill-circle-container {
+    gap: 0.45rem;
+    max-width: 80px;
   }
 
-  .skill-bar-container {
-    gap: 0.5rem;
+  .skill-circle-svg {
+    width: 80px;
+    height: 80px;
+    filter: drop-shadow(0 1px 4px rgba(0, 0, 0, 0.2));
+  }
+
+  .skill-circle-text {
+    width: 80px;
+    height: 80px;
+  }
+
+  .skill-circle-container .skill-percentage {
+    font-size: 0.9rem;
+  }
+
+  .skill-circle-container .skill-name {
+    font-size: 0.55rem;
+  }
+
+  .about-heading-section {
+    gap: 0.75rem;
+  }
+
+  .about-heading-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: #ffffff;
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+  }
+
+  .heading-underline {
+    width: 60px;
+    height: 2px;
+  }
+
+  .about-text-content {
+    gap: 1rem;
+  }
+
+  .about-paragraph {
+    font-size: 0.8rem;
+    color: #555555;
+    line-height: 1.5;
+    letter-spacing: 0.2px;
+  }
+
+  .about-right {
+    width: auto;
+    margin-left: 0;
+    gap: 2rem;
   }
 }
