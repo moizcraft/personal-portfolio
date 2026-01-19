@@ -30,7 +30,7 @@
 /* Animated Headline */
 .home-headline {
   font-size: 3rem;
-  font-weight: 800;
+  font-weight: 700;
   line-height: 1.2;
   color: #ffffff;
   margin: 0;
@@ -39,7 +39,7 @@
 
 .home-headline .highlight {
   color:  #555555;
-  font-weight: 900;
+  font-weight: 200;
   display: inline-block;
 }
 
@@ -316,7 +316,7 @@
 
   .home-headline {
     font-size: clamp(1.8rem, 6vw, 2.8rem);
-    font-weight: 800;
+    font-weight: 700;
     line-height: 1.2;
     color: #ffffff;
     margin: 0;
@@ -325,7 +325,7 @@
 
   .home-headline .highlight {
     color: #555555;
-    font-weight: 900;
+    font-weight: 200;
     display: inline-block;
   }
 
@@ -491,7 +491,7 @@
 
   .home-headline {
     font-size: clamp(1.4rem, 5vw, 2.2rem);
-    font-weight: 800;
+    font-weight: 700;
     line-height: 1.15;
     color: #ffffff;
     margin: 0;
@@ -500,7 +500,7 @@
 
   .home-headline .highlight {
     color: #555555;
-    font-weight: 900;
+    font-weight: 200;
     display: inline-block;
   }
 
