@@ -5,7 +5,7 @@ import '../styles/Projects.css';
 import ecommerceImage from '../assets/image/ecommerceImage.png';
 import inProgressImage from '../assets/image/inProgressImage.png';
 import pitchCraftImage from '../assets/image/pitchCraftImage.png';
-import dashboardtImage from '../assets/image/dashboardImage.png';
+import liveWeatherAppImage from '../assets/image/liveWeatherApp.png';
 
 // Project Card Component
 const ProjectCard = ({ title, description, image, demoUrl, sourceUrl, index }) => {
@@ -153,19 +153,20 @@ export const Projects = () => {
       sourceUrl: 'https://github.com/moizcraft/I-M-Store'
     },
     {
+      title: 'Live Weather App',
+      description: 'Live Weather App built using React and Bootstrap that fetches real-time weather data using a free Weather API.\nIt shows current temperature, weather conditions, and location-based updates with a responsive UI.',
+      image: liveWeatherAppImage,
+      demoUrl: 'https://liveweathercheck1.netlify.app',
+      sourceUrl: 'https://github.com/moizcraft/Live-Weather-App'
+    },
+    {
       title: 'Pitch Craft Ai',
       description: 'A web-based AI tool in progress that allows users to generate business ideas, chat with AI, and create resumes based on their prompts. Currently under development.',
       image: pitchCraftImage,
       demoUrl: inProgressImage ,
       sourceUrl: 'https://github.com/example/taskapp'
     },
-    {
-      title: 'Smart Productivity Dashboard',
-      description: 'React productivity dashboard with Firebase login, task management, offline sync via localStorage, and progress tracking. Work-in-progress with AI suggestions planned.',
-      image: dashboardtImage,
-      demoUrl: inProgressImage,
-      sourceUrl: 'https://github.com/example/weather'
-    }
+    
   ];
 
   return (
