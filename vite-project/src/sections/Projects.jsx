@@ -147,10 +147,10 @@ export const Projects = () => {
   const projectsData = [
     {
       title: 'E-Commerce Store',
-      description: 'A basic React-based e-commerce store featuring routing, Firebase authentication for login/signup, and a simple add-to-cart system using localStorage. Currently in progress, with database integration planned.',
+      description: 'Developed a full stack e commerce platform using React, Tailwind CSS, Node.js, Express.js, and MongoDB. Implemented secure authentication, product browsing, shopping cart management, and responsive user interfaces. Built and integrated REST APIs, with deployment on Vercel and Railway for a scalable and modern web experience.',
       image: ecommerceImage,
-      demoUrl: 'https://iandmstore.netlify.app/',
-      sourceUrl: 'https://github.com/moizcraft/I-M-Store'
+      demoUrl: 'https://vibewearstore.vercel.app/',
+      sourceUrl: 'https://github.com/moizcraft/Product-store-using-MDb'
     },
     {
       title: 'Live Weather App',
